@@ -1,0 +1,61 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply font-sans antialiased text-slate-800 bg-[#F4F8FD];
+    background-image: 
+      radial-gradient(#e0edfd 1.5px, transparent 1.5px),
+      radial-gradient(#e8f1fd 1.5px, #F4F8FD 1.5px);
+    background-size: 36px 36px;
+    background-position: 0 0, 18px 18px;
+  }
+}
+
+/* Custom joyful animations and helpers */
+@keyframes floatY {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-7px); }
+}
+
+@keyframes scanLine {
+  0% { top: 0%; opacity: 0.8; }
+  50% { opacity: 1; }
+  100% { top: 100%; opacity: 0.8; }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 15px rgba(56, 189, 248, 0.4); }
+  50% { box-shadow: 0 0 30px rgba(56, 189, 248, 0.8); }
+}
+
+.animate-float-y {
+  animation: floatY 3s ease-in-out infinite;
+}
+
+.animate-scan-line {
+  animation: scanLine 2.2s ease-in-out infinite alternate;
+}
+
+.glow-buddy {
+  animation: pulseGlow 2.5s infinite;
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
