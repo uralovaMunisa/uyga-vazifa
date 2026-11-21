@@ -45,7 +45,7 @@ export default function StreakAndRewardsModal({
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-xs">
       <div className="bg-white dark:bg-slate-900 rounded-3xl max-w-xl w-full p-6 sm:p-7 shadow-2xl border-2 border-amber-300 dark:border-amber-700/80 relative max-h-[90vh] overflow-y-auto animate-in fade-in zoom-in-95 duration-200 transition-colors">
-        
+
         {/* Close Button */}
         <button
           onClick={onClose}
@@ -71,7 +71,7 @@ export default function StreakAndRewardsModal({
 
         {/* Top 3 Stat Cards */}
         <div className="grid grid-cols-3 gap-3 mb-6">
-          
+
           <div className="bg-orange-50 dark:bg-orange-950/40 border border-orange-200 dark:border-orange-800 rounded-2xl p-3 text-center">
             <Flame className="w-6 h-6 text-orange-500 mx-auto mb-1 animate-pulse" />
             <div className="font-bubble text-xl font-bold text-orange-600 dark:text-orange-400">{streak} {isUz ? 'Kun' : 'Days'}</div>
@@ -123,13 +123,12 @@ export default function StreakAndRewardsModal({
             {weekdays.map((w, i) => (
               <div
                 key={i}
-                className={`flex flex-col items-center justify-center p-2 rounded-2xl border text-center ${
-                  w.completed
+                className={`flex flex-col items-center justify-center p-2 rounded-2xl border text-center ${w.completed
                     ? 'bg-orange-50 dark:bg-orange-950/40 border-orange-300 dark:border-orange-800 text-orange-700 dark:text-orange-300 font-bold'
                     : w.isToday
-                    ? 'bg-sky-50 dark:bg-sky-950/50 border-sky-400 dark:border-sky-700 text-sky-800 dark:text-sky-300 ring-2 ring-sky-200 dark:ring-sky-950 font-bold'
-                    : 'bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-400 dark:text-slate-500'
-                }`}
+                      ? 'bg-sky-50 dark:bg-sky-950/50 border-sky-400 dark:border-sky-700 text-sky-800 dark:text-sky-300 ring-2 ring-sky-200 dark:ring-sky-950 font-bold'
+                      : 'bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-400 dark:text-slate-500'
+                  }`}
               >
                 <span className="text-[11px] mb-1">{w.day}</span>
                 {w.completed ? (
@@ -155,11 +154,10 @@ export default function StreakAndRewardsModal({
             {BADGES.map((b) => (
               <div
                 key={b.id}
-                className={`p-3 rounded-2xl border flex items-start gap-2.5 ${
-                  b.unlocked
-                    ? 'bg-amber-50/60 dark:bg-amber-950/30 border-amber-200 dark:border-amber-800/80 shadow-2xs'
-                    : 'bg-slate-50 dark:bg-slate-800/60 border-slate-200 dark:border-slate-700 opacity-60'
-                }`}
+                className={`p-3 rounded-2xl border flex items-start gap-2.5 ${b.unlocked
+                  ? 'bg-amber-50/60 dark:bg-amber-950/30 border-amber-200 dark:border-amber-800/80 shadow-2xs'
+                  : 'bg-slate-50 dark:bg-slate-800/60 border-slate-200 dark:border-slate-700 opacity-60'
+                  }`}
               >
                 <span className="text-2xl flex-shrink-0">{b.emoji}</span>
                 <div className="min-w-0">
