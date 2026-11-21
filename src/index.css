@@ -4,12 +4,19 @@
 
 @layer base {
   body {
-    @apply font-sans antialiased text-slate-800 bg-[#F4F8FD];
+    @apply font-sans antialiased text-slate-800 bg-[#F4F8FD] transition-colors duration-200;
     background-image: 
       radial-gradient(#e0edfd 1.5px, transparent 1.5px),
       radial-gradient(#e8f1fd 1.5px, #F4F8FD 1.5px);
     background-size: 36px 36px;
     background-position: 0 0, 18px 18px;
+  }
+
+  .dark body {
+    @apply text-slate-100 bg-[#090D16];
+    background-image: 
+      radial-gradient(#1e293b 1.5px, transparent 1.5px),
+      radial-gradient(#151f32 1.5px, #090D16 1.5px);
   }
 }
 
@@ -57,5 +64,15 @@
 }
 ::-webkit-scrollbar-thumb:hover {
   background: #94a3b8;
+}
+
+.dark ::-webkit-scrollbar-track {
+  background: #0f172a;
+}
+.dark ::-webkit-scrollbar-thumb {
+  background: #334155;
+}
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #475569;
 }
 

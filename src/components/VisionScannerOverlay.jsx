@@ -13,11 +13,11 @@ export default function VisionScannerOverlay({
   const t = TRANSLATIONS[language] || TRANSLATIONS.uz;
 
   return (
-    <div className="bg-white/95 backdrop-blur-md rounded-3xl border-2 border-sky-300 shadow-2xl p-6 sm:p-10 my-6 text-center overflow-hidden relative">
+    <div className="bg-white/95 dark:bg-slate-900/95 backdrop-blur-md rounded-3xl border-2 border-sky-300 dark:border-slate-700 shadow-2xl p-6 sm:p-10 my-6 text-center overflow-hidden relative transition-colors">
       
       {/* Decorative gradient background circles */}
-      <div className="absolute -top-16 -left-16 w-40 h-40 bg-sky-200/40 rounded-full blur-2xl pointer-events-none" />
-      <div className="absolute -bottom-16 -right-16 w-40 h-40 bg-purple-200/40 rounded-full blur-2xl pointer-events-none" />
+      <div className="absolute -top-16 -left-16 w-40 h-40 bg-sky-200/40 dark:bg-sky-900/20 rounded-full blur-2xl pointer-events-none" />
+      <div className="absolute -bottom-16 -right-16 w-40 h-40 bg-purple-200/40 dark:bg-purple-900/20 rounded-full blur-2xl pointer-events-none" />
 
       {/* Center Image Scanner Visual if image mode */}
       {inputMode === 'image' && imageSrc && (
@@ -39,7 +39,7 @@ export default function VisionScannerOverlay({
             </span>
           </div>
 
-          <div className="absolute bottom-3 left-3 bg-white/90 backdrop-blur-sm px-2.5 py-1 rounded-lg text-[10px] font-bold text-slate-700 shadow animate-bounce-slow">
+          <div className="absolute bottom-3 left-3 bg-white/90 dark:bg-slate-900/90 backdrop-blur-sm px-2.5 py-1 rounded-lg text-[10px] font-bold text-slate-700 dark:text-slate-200 shadow animate-bounce-slow">
             {t.scanner.readingBadge}
           </div>
         </div>
@@ -54,16 +54,16 @@ export default function VisionScannerOverlay({
       </div>
 
       {/* Status Title & Message */}
-      <h3 className="font-bubble text-xl sm:text-2xl font-bold text-slate-800 mb-2">
+      <h3 className="font-bubble text-xl sm:text-2xl font-bold text-slate-800 dark:text-slate-100 mb-2">
         {progress.message || t.scanner.title}
       </h3>
-      <p className="text-xs sm:text-sm text-slate-500 max-w-md mx-auto mb-6">
+      <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 max-w-md mx-auto mb-6">
         {t.scanner.desc}
       </p>
 
       {/* Progress Bar */}
       <div className="max-w-md mx-auto">
-        <div className="flex items-center justify-between text-xs font-bold text-sky-800 mb-1.5 px-1">
+        <div className="flex items-center justify-between text-xs font-bold text-sky-800 dark:text-sky-300 mb-1.5 px-1">
           <span className="flex items-center gap-1">
             <Sparkles className="w-3.5 h-3.5 text-amber-500 fill-amber-400 animate-spin" />
             <span>{t.scanner.aiProcessing}</span>
@@ -71,7 +71,7 @@ export default function VisionScannerOverlay({
           <span>{progress.percent || 45}%</span>
         </div>
 
-        <div className="w-full h-3.5 bg-sky-100 rounded-full overflow-hidden p-0.5 border border-sky-200">
+        <div className="w-full h-3.5 bg-sky-100 dark:bg-slate-800 rounded-full overflow-hidden p-0.5 border border-sky-200 dark:border-slate-700">
           <div
             className="h-full bg-gradient-to-r from-sky-400 via-indigo-500 to-purple-500 rounded-full transition-all duration-500 shadow-sm"
             style={{ width: `${progress.percent || 45}%` }}
@@ -81,13 +81,13 @@ export default function VisionScannerOverlay({
 
       {/* Sub-steps tags */}
       <div className="flex flex-wrap items-center justify-center gap-2 mt-6 max-w-lg mx-auto">
-        <span className="text-[11px] font-bold px-3 py-1 rounded-full bg-sky-50 text-sky-700 border border-sky-200">
+        <span className="text-[11px] font-bold px-3 py-1 rounded-full bg-sky-50 dark:bg-sky-950/60 text-sky-700 dark:text-sky-300 border border-sky-200 dark:border-sky-800">
           {t.scanner.sub1}
         </span>
-        <span className="text-[11px] font-bold px-3 py-1 rounded-full bg-indigo-50 text-indigo-700 border border-indigo-200">
+        <span className="text-[11px] font-bold px-3 py-1 rounded-full bg-indigo-50 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800">
           {t.scanner.sub2}
         </span>
-        <span className="text-[11px] font-bold px-3 py-1 rounded-full bg-purple-50 text-purple-700 border border-purple-200">
+        <span className="text-[11px] font-bold px-3 py-1 rounded-full bg-purple-50 dark:bg-purple-950/60 text-purple-700 dark:text-purple-300 border border-purple-200 dark:border-purple-800">
           {t.scanner.sub3}
         </span>
       </div>

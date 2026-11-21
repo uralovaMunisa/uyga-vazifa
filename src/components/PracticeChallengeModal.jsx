@@ -47,35 +47,35 @@ export default function PracticeChallengeModal({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/50 backdrop-blur-xs">
-      <div className="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-7 shadow-2xl border-2 border-emerald-300 relative animate-in fade-in zoom-in-95 duration-200">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-xs">
+      <div className="bg-white dark:bg-slate-900 rounded-3xl max-w-lg w-full p-6 sm:p-7 shadow-2xl border-2 border-emerald-300 dark:border-emerald-700/80 relative animate-in fade-in zoom-in-95 duration-200 transition-colors">
         
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 p-2 text-slate-400 hover:text-slate-600 rounded-full hover:bg-slate-100 transition-colors"
+          className="absolute top-4 right-4 p-2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
         >
           <X className="w-5 h-5" />
         </button>
 
         {/* Header */}
         <div className="flex items-center gap-3 mb-4">
-          <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-emerald-400 to-teal-500 text-white flex items-center justify-center shadow-md shadow-emerald-200">
+          <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-emerald-400 to-teal-500 text-white flex items-center justify-center shadow-md shadow-emerald-200 dark:shadow-emerald-950">
             <Target className="w-6 h-6" />
           </div>
           <div>
-            <span className="text-xs font-extrabold uppercase tracking-wider text-emerald-600">
+            <span className="text-xs font-extrabold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">
               {t.challenge.reinforce}
             </span>
-            <h3 className="font-bubble text-xl font-bold text-slate-800">
+            <h3 className="font-bubble text-xl font-bold text-slate-800 dark:text-slate-100">
               {t.challenge.title}
             </h3>
           </div>
         </div>
 
         {/* Question Prompt */}
-        <div className="bg-emerald-50/60 border border-emerald-200 rounded-2xl p-4 mb-5">
-          <p className="font-bubble text-base sm:text-lg font-bold text-slate-800 leading-snug">
+        <div className="bg-emerald-50/60 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800 rounded-2xl p-4 mb-5">
+          <p className="font-bubble text-base sm:text-lg font-bold text-slate-800 dark:text-slate-100 leading-snug">
             {challenge.question}
           </p>
         </div>
@@ -84,16 +84,16 @@ export default function PracticeChallengeModal({
         <div className="space-y-2.5 mb-5">
           {challenge.options.map((option, idx) => {
             const isSelected = selectedIndex === idx;
-            let btnClass = 'border-slate-200 hover:border-emerald-300 bg-white hover:bg-emerald-50/40 text-slate-700';
+            let btnClass = 'border-slate-200 dark:border-slate-700 hover:border-emerald-300 dark:hover:border-emerald-500 bg-white dark:bg-slate-800 hover:bg-emerald-50/40 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200';
 
             if (isAnswered && isSelected) {
               if (isCorrect) {
-                btnClass = 'border-emerald-500 bg-emerald-50 text-emerald-900 ring-2 ring-emerald-300 font-bold';
+                btnClass = 'border-emerald-500 bg-emerald-50 dark:bg-emerald-950/60 text-emerald-900 dark:text-emerald-200 ring-2 ring-emerald-300 dark:ring-emerald-800 font-bold';
               } else {
-                btnClass = 'border-rose-400 bg-rose-50 text-rose-800 font-medium';
+                btnClass = 'border-rose-400 bg-rose-50 dark:bg-rose-950/60 text-rose-800 dark:text-rose-200 font-medium';
               }
             } else if (isAnswered && idx === challenge.correctIndex && !isCorrect) {
-              btnClass = 'border-emerald-500 bg-emerald-50/50 text-emerald-800';
+              btnClass = 'border-emerald-500 bg-emerald-50/50 dark:bg-emerald-950/40 text-emerald-800 dark:text-emerald-200';
             }
 
             return (
@@ -106,9 +106,9 @@ export default function PracticeChallengeModal({
                 <span>{option}</span>
                 {isAnswered && isSelected && (
                   isCorrect ? (
-                    <CheckCircle2 className="w-5 h-5 text-emerald-600 flex-shrink-0" />
+                    <CheckCircle2 className="w-5 h-5 text-emerald-600 dark:text-emerald-400 flex-shrink-0" />
                   ) : (
-                    <AlertCircle className="w-5 h-5 text-rose-500 flex-shrink-0" />
+                    <AlertCircle className="w-5 h-5 text-rose-500 dark:text-rose-400 flex-shrink-0" />
                   )
                 )}
               </button>
@@ -119,7 +119,7 @@ export default function PracticeChallengeModal({
         {/* Feedback / Result Banner */}
         {isAnswered && (
           <div className={`p-4 rounded-2xl mb-4 border ${
-            isCorrect ? 'bg-emerald-100/70 border-emerald-300 text-emerald-900' : 'bg-amber-50 border-amber-200 text-amber-900'
+            isCorrect ? 'bg-emerald-100/70 dark:bg-emerald-950/70 border-emerald-300 dark:border-emerald-800 text-emerald-900 dark:text-emerald-200' : 'bg-amber-50 dark:bg-amber-950/70 border-amber-200 dark:border-amber-800 text-amber-900 dark:text-amber-200'
           }`}>
             <div className="flex items-start gap-2">
               <span className="text-xl">{isCorrect ? '🎉' : '💡'}</span>
@@ -136,11 +136,11 @@ export default function PracticeChallengeModal({
         )}
 
         {/* Footer actions */}
-        <div className="flex items-center justify-end gap-3 pt-3 border-t border-slate-100">
+        <div className="flex items-center justify-end gap-3 pt-3 border-t border-slate-100 dark:border-slate-800">
           {!isCorrect && isAnswered && (
             <button
               onClick={handleReset}
-              className="px-4 py-2 text-xs font-bold text-slate-600 hover:text-slate-800"
+              className="px-4 py-2 text-xs font-bold text-slate-600 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200"
             >
               {t.challenge.tryAgainBtn}
             </button>
@@ -148,7 +148,7 @@ export default function PracticeChallengeModal({
 
           <button
             onClick={onClose}
-            className="px-6 py-2.5 rounded-2xl bg-gradient-to-r from-emerald-500 to-teal-600 text-white font-bubble text-sm font-bold shadow-md shadow-emerald-200 hover:opacity-95 active:scale-95 transition-all"
+            className="px-6 py-2.5 rounded-2xl bg-gradient-to-r from-emerald-500 to-teal-600 text-white font-bubble text-sm font-bold shadow-md shadow-emerald-200 dark:shadow-emerald-950 hover:opacity-95 active:scale-95 transition-all"
           >
             {t.challenge.closeBtn}
           </button>

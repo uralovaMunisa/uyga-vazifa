@@ -132,37 +132,37 @@ export default function FollowUpChat({
   };
 
   return (
-    <div className="bg-white/95 backdrop-blur-md rounded-3xl border border-sky-100 shadow-md p-5 sm:p-6">
+    <div className="bg-white/95 dark:bg-slate-900/95 backdrop-blur-md rounded-3xl border border-sky-100 dark:border-slate-800 shadow-md p-5 sm:p-6 transition-colors">
       
       {/* Header */}
-      <div className="flex items-center justify-between mb-4 border-b border-slate-100 pb-3">
+      <div className="flex items-center justify-between mb-4 border-b border-slate-100 dark:border-slate-800 pb-3">
         <div className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-2xl bg-purple-100 text-purple-700 flex items-center justify-center font-bold">
+          <div className="w-8 h-8 rounded-2xl bg-purple-100 dark:bg-purple-950 text-purple-700 dark:text-purple-300 flex items-center justify-center font-bold">
             <MessageCircle className="w-4 h-4" />
           </div>
           <div>
-            <h3 className="font-bubble text-lg font-bold text-slate-800">
+            <h3 className="font-bubble text-lg font-bold text-slate-800 dark:text-slate-100">
               {t.chat.title}
             </h3>
-            <p className="text-xs text-slate-500">{t.chat.desc}</p>
+            <p className="text-xs text-slate-500 dark:text-slate-400">{t.chat.desc}</p>
           </div>
         </div>
 
-        <span className="text-xs font-semibold px-2.5 py-1 rounded-full bg-purple-50 text-purple-700 border border-purple-200">
+        <span className="text-xs font-semibold px-2.5 py-1 rounded-full bg-purple-50 dark:bg-purple-950/70 text-purple-700 dark:text-purple-300 border border-purple-200 dark:border-purple-800">
           AI Repetitor 24/7 ✨
         </span>
       </div>
 
       {/* Suggested Quick Question Pills */}
       <div className="mb-4">
-        <p className="text-xs font-bold text-slate-500 mb-2">{isUz ? "Tezkor savolni bosing:" : "Tap a quick question to ask:"}</p>
+        <p className="text-xs font-bold text-slate-500 dark:text-slate-400 mb-2">{isUz ? "Tezkor savolni bosing:" : "Tap a quick question to ask:"}</p>
         <div className="flex flex-wrap gap-2">
           {suggestedQuestions.map((q, idx) => (
             <button
               key={idx}
               type="button"
               onClick={() => handleSend(q)}
-              className="text-xs font-medium bg-slate-50 hover:bg-sky-50 text-slate-700 hover:text-sky-800 px-3 py-1.5 rounded-xl border border-slate-200 hover:border-sky-300 transition-all active:scale-95"
+              className="text-xs font-medium bg-slate-50 dark:bg-slate-800 hover:bg-sky-50 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 hover:text-sky-800 dark:hover:text-sky-300 px-3 py-1.5 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-sky-300 dark:hover:border-slate-600 transition-all active:scale-95"
             >
               {q}
             </button>
@@ -171,7 +171,7 @@ export default function FollowUpChat({
       </div>
 
       {/* Messages Thread Container */}
-      <div className="space-y-3 max-h-80 overflow-y-auto p-3 rounded-2xl bg-slate-50 border border-slate-100 mb-4">
+      <div className="space-y-3 max-h-80 overflow-y-auto p-3 rounded-2xl bg-slate-50 dark:bg-slate-950/80 border border-slate-100 dark:border-slate-800 mb-4">
         {messages.map((msg) => {
           const isUser = msg.sender === 'user';
           return (
@@ -191,13 +191,13 @@ export default function FollowUpChat({
                 className={`max-w-[80%] rounded-2xl p-3.5 text-xs sm:text-sm font-medium leading-relaxed relative group ${
                   isUser
                     ? 'bg-gradient-to-r from-sky-500 to-indigo-600 text-white rounded-tr-xs'
-                    : 'bg-white text-slate-800 border border-slate-200 rounded-tl-xs shadow-2xs'
+                    : 'bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-100 border border-slate-200 dark:border-slate-700 rounded-tl-xs shadow-2xs'
                 }`}
               >
                 <p className="whitespace-pre-line">{msg.text}</p>
                 
                 <div className={`flex items-center justify-between gap-3 mt-1.5 pt-1 border-t text-[10px] ${
-                  isUser ? 'border-white/20 text-sky-100' : 'border-slate-100 text-slate-400'
+                  isUser ? 'border-white/20 text-sky-100' : 'border-slate-100 dark:border-slate-700 text-slate-400 dark:text-slate-400'
                 }`}>
                   <span>{msg.time}</span>
                   {!isUser && (
@@ -205,7 +205,7 @@ export default function FollowUpChat({
                       type="button"
                       onClick={() => handleReadMessage(msg.text)}
                       title={t.chat.listen}
-                      className="text-slate-400 hover:text-sky-600 flex items-center gap-1"
+                      className="text-slate-400 dark:text-slate-400 hover:text-sky-600 dark:hover:text-sky-400 flex items-center gap-1"
                     >
                       <Volume2 className="w-3 h-3" />
                       <span>{t.chat.listen}</span>
@@ -220,7 +220,7 @@ export default function FollowUpChat({
         {isTyping && (
           <div className="flex items-center gap-2.5">
             <MascotAvatar mascotId={currentMascotId} mood="thinking" size="sm" />
-            <div className="bg-white border border-slate-200 rounded-2xl p-3 text-xs text-slate-500 flex items-center gap-2">
+            <div className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl p-3 text-xs text-slate-500 dark:text-slate-400 flex items-center gap-2">
               <span className="flex gap-1">
                 <span className="w-2 h-2 bg-sky-400 rounded-full animate-bounce" />
                 <span className="w-2 h-2 bg-sky-400 rounded-full animate-bounce [animation-delay:0.2s]" />
@@ -248,7 +248,7 @@ export default function FollowUpChat({
             value={inputText}
             onChange={(e) => setInputText(e.target.value)}
             placeholder={t.chat.inputPlaceholder}
-            className="w-full pl-4 pr-10 py-3 rounded-2xl border-2 border-slate-200 focus:border-sky-400 focus:ring-4 focus:ring-sky-100 outline-none text-xs sm:text-sm font-medium text-slate-800 placeholder-slate-400"
+            className="w-full pl-4 pr-10 py-3 rounded-2xl border-2 border-slate-200 dark:border-slate-700 focus:border-sky-400 dark:focus:border-sky-500 focus:ring-4 focus:ring-sky-100 dark:focus:ring-sky-950/50 outline-none text-xs sm:text-sm font-medium text-slate-800 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 bg-white dark:bg-slate-800/90"
           />
 
           <button
@@ -256,7 +256,7 @@ export default function FollowUpChat({
             onClick={handleDictate}
             title={isListening ? 'Eshitilmoqda...' : 'Ovoz bilan yozish'}
             className={`absolute right-2.5 top-1/2 -translate-y-1/2 p-1.5 rounded-xl transition-all ${
-              isListening ? 'bg-rose-500 text-white animate-pulse' : 'text-slate-400 hover:text-sky-600'
+              isListening ? 'bg-rose-500 text-white animate-pulse' : 'text-slate-400 dark:text-slate-500 hover:text-sky-600 dark:hover:text-sky-400'
             }`}
           >
             {isListening ? <MicOff className="w-4 h-4" /> : <Mic className="w-4 h-4" />}
@@ -268,8 +268,8 @@ export default function FollowUpChat({
           disabled={!inputText.trim() || isTyping}
           className={`p-3 rounded-2xl text-white font-bold transition-all shadow-md active:scale-95 ${
             !inputText.trim() || isTyping
-              ? 'bg-slate-300 cursor-not-allowed shadow-none'
-              : 'bg-gradient-to-r from-sky-500 to-indigo-600 hover:from-sky-600 hover:to-indigo-700 shadow-sky-200'
+              ? 'bg-slate-300 dark:bg-slate-800 text-white dark:text-slate-600 cursor-not-allowed shadow-none'
+              : 'bg-gradient-to-r from-sky-500 to-indigo-600 hover:from-sky-600 hover:to-indigo-700 shadow-sky-200 dark:shadow-indigo-950'
           }`}
         >
           <Send className="w-4 h-4" />

@@ -113,15 +113,15 @@ export default function SolutionDisplay({
     <div className="space-y-6">
       
       {/* 1. Header Card: Problem Extracted with AI Vision & Cheer Greeting */}
-      <div className="bg-white/95 backdrop-blur-md rounded-3xl border-2 border-sky-200 p-5 sm:p-6 shadow-md relative overflow-hidden">
+      <div className="bg-white/95 dark:bg-slate-900/95 backdrop-blur-md rounded-3xl border-2 border-sky-200 dark:border-slate-800 p-5 sm:p-6 shadow-md relative overflow-hidden transition-colors">
         
         {/* Top bar */}
-        <div className="flex flex-wrap items-center justify-between gap-3 mb-4 border-b border-sky-100 pb-3">
+        <div className="flex flex-wrap items-center justify-between gap-3 mb-4 border-b border-sky-100 dark:border-slate-800 pb-3">
           <div className="flex items-center gap-2">
-            <span className="px-3 py-1 rounded-full text-xs font-bold bg-sky-100 text-sky-800 border border-sky-200">
+            <span className="px-3 py-1 rounded-full text-xs font-bold bg-sky-100 dark:bg-sky-950/70 text-sky-800 dark:text-sky-300 border border-sky-200 dark:border-sky-800">
               {gradeLevel} • {subject.toUpperCase()}
             </span>
-            <span className="text-xs text-slate-400">• {t.solution.stepsHeader}</span>
+            <span className="text-xs text-slate-400 dark:text-slate-500">• {t.solution.stepsHeader}</span>
           </div>
 
           <div className="flex items-center gap-2">
@@ -130,7 +130,7 @@ export default function SolutionDisplay({
               className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold transition-all ${
                 activeSpeakingStep === 'all'
                   ? 'bg-rose-500 text-white animate-pulse'
-                  : 'bg-sky-50 hover:bg-sky-100 text-sky-700 border border-sky-200'
+                  : 'bg-sky-50 dark:bg-slate-800 hover:bg-sky-100 dark:hover:bg-slate-700 text-sky-700 dark:text-sky-300 border border-sky-200 dark:border-slate-700'
               }`}
             >
               {activeSpeakingStep === 'all' ? <VolumeX className="w-3.5 h-3.5" /> : <Volume2 className="w-3.5 h-3.5" />}
@@ -139,7 +139,7 @@ export default function SolutionDisplay({
 
             <button
               onClick={handleCopy}
-              className="p-1.5 rounded-xl text-slate-500 hover:text-sky-600 hover:bg-sky-50 border border-slate-200"
+              className="p-1.5 rounded-xl text-slate-500 dark:text-slate-400 hover:text-sky-600 dark:hover:text-sky-400 hover:bg-sky-50 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-700"
               title={t.solution.copy}
             >
               {isCopied ? <Check className="w-4 h-4 text-emerald-500" /> : <Copy className="w-4 h-4" />}
@@ -147,7 +147,7 @@ export default function SolutionDisplay({
 
             <button
               onClick={handlePrint}
-              className="p-1.5 rounded-xl text-slate-500 hover:text-sky-600 hover:bg-sky-50 border border-slate-200 hidden sm:inline-flex"
+              className="p-1.5 rounded-xl text-slate-500 dark:text-slate-400 hover:text-sky-600 dark:hover:text-sky-400 hover:bg-sky-50 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-700 hidden sm:inline-flex"
               title={t.solution.print}
             >
               <Printer className="w-4 h-4" />
@@ -156,25 +156,25 @@ export default function SolutionDisplay({
         </div>
 
         {/* Mascot Encouragement Banner */}
-        <div className="flex items-start sm:items-center gap-3 bg-gradient-to-r from-amber-50 to-sky-50 p-3.5 rounded-2xl border border-amber-200/60 mb-5">
+        <div className="flex items-start sm:items-center gap-3 bg-gradient-to-r from-amber-50 to-sky-50 dark:from-slate-800/90 dark:to-slate-800/60 p-3.5 rounded-2xl border border-amber-200/60 dark:border-slate-700 mb-5">
           <MascotAvatar mascotId={currentMascotId} mood="cheering" size="sm" className="flex-shrink-0" />
           <div>
-            <h2 className="font-bubble text-base sm:text-lg font-bold text-slate-800 flex items-center gap-1.5">
+            <h2 className="font-bubble text-base sm:text-lg font-bold text-slate-800 dark:text-slate-100 flex items-center gap-1.5">
               <span>{cheerTitle || (isUz ? "Hammasi oddiy! Keling birga yechamiz! 🎉" : "You've got this! Let's solve it! 🎉")}</span>
             </h2>
-            <p className="text-xs sm:text-sm text-slate-600 font-medium leading-relaxed">
+            <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 font-medium leading-relaxed">
               {encouragement}
             </p>
           </div>
         </div>
 
         {/* Extracted Problem Display */}
-        <div className="bg-slate-50 rounded-2xl p-4 border border-slate-200">
-          <div className="flex items-center gap-1.5 text-xs font-bold text-slate-500 uppercase tracking-wider mb-1.5">
-            <FileQuestion className="w-3.5 h-3.5 text-sky-600" />
+        <div className="bg-slate-50 dark:bg-slate-800/80 rounded-2xl p-4 border border-slate-200 dark:border-slate-700">
+          <div className="flex items-center gap-1.5 text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1.5">
+            <FileQuestion className="w-3.5 h-3.5 text-sky-600 dark:text-sky-400" />
             <span>{t.solution.extractedTitle}</span>
           </div>
-          <p className="text-sm sm:text-base font-bold text-slate-800 whitespace-pre-line leading-relaxed">
+          <p className="text-sm sm:text-base font-bold text-slate-800 dark:text-slate-100 whitespace-pre-line leading-relaxed">
             {extractedProblem}
           </p>
         </div>
@@ -184,13 +184,13 @@ export default function SolutionDisplay({
       {/* 2. Step-by-Step Breakdown Cards */}
       <div className="space-y-4">
         <div className="flex items-center justify-between px-2">
-          <h3 className="font-bubble text-lg sm:text-xl font-bold text-slate-800 flex items-center gap-2">
+          <h3 className="font-bubble text-lg sm:text-xl font-bold text-slate-800 dark:text-slate-100 flex items-center gap-2">
             <span>{t.solution.stepsHeader}</span>
-            <span className="text-xs font-sans font-bold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 border border-emerald-200">
+            <span className="text-xs font-sans font-bold px-2 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-950/70 text-emerald-800 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800">
               {steps.length} {t.solution.stepsCount}
             </span>
           </h3>
-          <span className="text-xs text-slate-400">{t.solution.listenStepHint}</span>
+          <span className="text-xs text-slate-400 dark:text-slate-500">{t.solution.listenStepHint}</span>
         </div>
 
         {steps.map((step, index) => {
@@ -198,10 +198,10 @@ export default function SolutionDisplay({
           return (
             <div
               key={index}
-              className={`bg-white rounded-3xl border-2 p-5 sm:p-6 transition-all duration-200 shadow-2xs hover:shadow-md ${
+              className={`rounded-3xl border-2 p-5 sm:p-6 transition-all duration-200 shadow-2xs hover:shadow-md ${
                 isStepSpeaking
-                  ? 'border-sky-400 ring-2 ring-sky-200 bg-sky-50/30'
-                  : 'border-slate-100 hover:border-sky-200'
+                  ? 'border-sky-400 dark:border-sky-500 ring-2 ring-sky-200 dark:ring-sky-950/80 bg-sky-50/30 dark:bg-slate-800/80'
+                  : 'bg-white dark:bg-slate-900/95 border-slate-100 dark:border-slate-800 hover:border-sky-200 dark:hover:border-slate-700'
               }`}
             >
               {/* Step Header */}
@@ -210,7 +210,7 @@ export default function SolutionDisplay({
                   <span className="flex items-center justify-center w-8 h-8 rounded-2xl bg-gradient-to-tr from-sky-400 to-indigo-600 text-white font-bubble font-bold text-sm shadow-2xs">
                     {step.stepNumber}
                   </span>
-                  <h4 className="font-bubble text-base sm:text-lg font-bold text-slate-800 flex items-center gap-2">
+                  <h4 className="font-bubble text-base sm:text-lg font-bold text-slate-800 dark:text-slate-100 flex items-center gap-2">
                     <span>{step.emoji}</span>
                     <span>{step.title}</span>
                   </h4>
@@ -223,7 +223,7 @@ export default function SolutionDisplay({
                   className={`flex items-center gap-1.5 px-3 py-1 rounded-xl text-xs font-bold transition-all ${
                     isStepSpeaking
                       ? 'bg-rose-500 text-white animate-pulse'
-                      : 'bg-sky-50 hover:bg-sky-100 text-sky-700 border border-sky-200'
+                      : 'bg-sky-50 dark:bg-slate-800 hover:bg-sky-100 dark:hover:bg-slate-700 text-sky-700 dark:text-sky-300 border border-sky-200 dark:border-slate-700'
                   }`}
                 >
                   <Volume2 className="w-3.5 h-3.5" />
@@ -232,7 +232,7 @@ export default function SolutionDisplay({
               </div>
 
               {/* Step Explanation */}
-              <p className="text-sm sm:text-base text-slate-700 leading-relaxed font-medium whitespace-pre-line pl-1 sm:pl-10 mb-3">
+              <p className="text-sm sm:text-base text-slate-700 dark:text-slate-300 leading-relaxed font-medium whitespace-pre-line pl-1 sm:pl-10 mb-3">
                 {step.explanation}
               </p>
 
@@ -240,13 +240,13 @@ export default function SolutionDisplay({
               {(step.formula || step.tip) && (
                 <div className="pl-1 sm:pl-10 space-y-2">
                   {step.formula && (
-                    <div className="inline-block bg-slate-900 text-cyan-300 font-mono text-xs sm:text-sm px-3.5 py-1.5 rounded-xl shadow-2xs border border-slate-700">
+                    <div className="inline-block bg-slate-900 dark:bg-black text-cyan-300 font-mono text-xs sm:text-sm px-3.5 py-1.5 rounded-xl shadow-2xs border border-slate-700 dark:border-slate-800">
                       💡 {step.formula}
                     </div>
                   )}
                   {step.tip && (
-                    <div className="bg-amber-50 border border-amber-200 text-amber-900 text-xs px-3 py-2 rounded-xl flex items-start gap-1.5 font-medium">
-                      <Lightbulb className="w-4 h-4 text-amber-600 flex-shrink-0 mt-0.5" />
+                    <div className="bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-800/60 text-amber-900 dark:text-amber-200 text-xs px-3 py-2 rounded-xl flex items-start gap-1.5 font-medium">
+                      <Lightbulb className="w-4 h-4 text-amber-600 dark:text-amber-400 flex-shrink-0 mt-0.5" />
                       <span>{step.tip}</span>
                     </div>
                   )}
@@ -317,9 +317,9 @@ export default function SolutionDisplay({
                 sounds.playPop();
                 onOpenPracticeChallenge();
               }}
-              className="flex items-center gap-2 px-5 py-2.5 rounded-2xl bg-white text-emerald-800 hover:bg-emerald-50 font-bubble text-sm font-bold shadow-md transition-all active:scale-95"
+              className="flex items-center gap-2 px-5 py-2.5 rounded-2xl bg-white dark:bg-slate-900 text-emerald-800 dark:text-emerald-300 hover:bg-emerald-50 dark:hover:bg-slate-800 font-bubble text-sm font-bold shadow-md transition-all active:scale-95"
             >
-              <Target className="w-4 h-4 text-emerald-600" />
+              <Target className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
               <span>{t.solution.tryPractice}</span>
             </button>
           )}

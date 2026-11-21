@@ -98,22 +98,22 @@ export default function InputSection({
   const isSubmitDisabled = isSolving || (inputMode === 'text' && !textPrompt.trim()) || (inputMode === 'image' && !imageSrc);
 
   return (
-    <div className="bg-white/95 backdrop-blur-sm rounded-3xl border border-sky-100 shadow-md p-4 sm:p-6 transition-all">
+    <div className="bg-white/95 dark:bg-slate-900/95 backdrop-blur-sm rounded-3xl border border-sky-100 dark:border-slate-800 shadow-md p-4 sm:p-6 transition-colors">
       
       {/* Top Header: Input Mode Tabs */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-5 border-b border-slate-100 pb-4">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-5 border-b border-slate-100 dark:border-slate-800 pb-4">
         <div>
-          <span className="flex items-center gap-1.5 font-bubble text-lg font-bold text-slate-800">
-            <span className="flex items-center justify-center w-8 h-8 rounded-2xl bg-indigo-100 text-indigo-700 font-bold text-sm">
+          <span className="flex items-center gap-1.5 font-bubble text-lg font-bold text-slate-800 dark:text-slate-100">
+            <span className="flex items-center justify-center w-8 h-8 rounded-2xl bg-indigo-100 dark:bg-indigo-950 text-indigo-700 dark:text-indigo-300 font-bold text-sm">
               {t.step3.num}
             </span>
             {t.step3.title}
           </span>
-          <p className="text-xs text-slate-500">{t.step3.desc}</p>
+          <p className="text-xs text-slate-500 dark:text-slate-400">{t.step3.desc}</p>
         </div>
 
         {/* Tab Buttons */}
-        <div className="flex items-center p-1 bg-slate-100 rounded-2xl self-start sm:self-auto border border-slate-200">
+        <div className="flex items-center p-1 bg-slate-100 dark:bg-slate-800 rounded-2xl self-start sm:self-auto border border-slate-200 dark:border-slate-700">
           <button
             type="button"
             onClick={() => {
@@ -122,11 +122,11 @@ export default function InputSection({
             }}
             className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs sm:text-sm font-bubble font-bold transition-all ${
               inputMode === 'text'
-                ? 'bg-white text-sky-700 shadow-2xs'
-                : 'text-slate-600 hover:text-slate-900'
+                ? 'bg-white dark:bg-slate-700 text-sky-700 dark:text-sky-300 shadow-2xs'
+                : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200'
             }`}
           >
-            <FileText className="w-4 h-4 text-sky-500" />
+            <FileText className="w-4 h-4 text-sky-500 dark:text-sky-400" />
             <span>{t.step3.tabText}</span>
           </button>
 
@@ -138,11 +138,11 @@ export default function InputSection({
             }}
             className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs sm:text-sm font-bubble font-bold transition-all ${
               inputMode === 'image'
-                ? 'bg-white text-emerald-700 shadow-2xs'
-                : 'text-slate-600 hover:text-slate-900'
+                ? 'bg-white dark:bg-slate-700 text-emerald-700 dark:text-emerald-300 shadow-2xs'
+                : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200'
             }`}
           >
-            <Camera className="w-4 h-4 text-emerald-500" />
+            <Camera className="w-4 h-4 text-emerald-500 dark:text-emerald-400" />
             <span>{t.step3.tabImage}</span>
           </button>
         </div>
@@ -150,7 +150,7 @@ export default function InputSection({
 
       {/* Exercise Type Filter Chips */}
       <div className="mb-4">
-        <label className="block text-xs font-bold text-slate-600 mb-2">
+        <label className="block text-xs font-bold text-slate-600 dark:text-slate-300 mb-2">
           {t.step3.exerciseTypeLabel}
         </label>
         <div className="flex items-center gap-2 overflow-x-auto pb-1 no-scrollbar">
@@ -166,8 +166,8 @@ export default function InputSection({
                 }}
                 className={`flex-shrink-0 flex items-center gap-1.5 px-3 py-1.5 rounded-2xl text-xs font-semibold transition-all ${
                   isSelected
-                    ? 'bg-sky-100 text-sky-800 border-2 border-sky-400 font-bold'
-                    : 'bg-slate-50 text-slate-600 hover:bg-slate-100 border border-slate-200'
+                    ? 'bg-sky-100 dark:bg-sky-950/80 text-sky-800 dark:text-sky-300 border-2 border-sky-400 dark:border-sky-500 font-bold'
+                    : 'bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700'
                 }`}
               >
                 <span>{type.emoji}</span>
@@ -187,7 +187,7 @@ export default function InputSection({
               value={textPrompt}
               onChange={(e) => onTextPromptChange(e.target.value)}
               placeholder={t.step3.textareaPlaceholder}
-              className="w-full p-4 rounded-2xl border-2 border-slate-200 focus:border-sky-400 focus:ring-4 focus:ring-sky-100 outline-none text-slate-800 placeholder-slate-400 font-medium text-sm sm:text-base leading-relaxed transition-all resize-none"
+              className="w-full p-4 rounded-2xl border-2 border-slate-200 dark:border-slate-700 focus:border-sky-400 dark:focus:border-sky-500 focus:ring-4 focus:ring-sky-100 dark:focus:ring-sky-950/50 outline-none text-slate-800 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 bg-white dark:bg-slate-800/80 font-medium text-sm sm:text-base leading-relaxed transition-all resize-none"
             />
 
             {/* Bottom-right controls inside textarea */}
@@ -200,7 +200,7 @@ export default function InputSection({
                   className={`p-2 rounded-xl text-xs font-bold flex items-center gap-1 transition-all ${
                     isListening
                       ? 'bg-rose-500 text-white animate-pulse'
-                      : 'bg-sky-50 text-sky-600 hover:bg-sky-100 border border-sky-200'
+                      : 'bg-sky-50 dark:bg-slate-700 text-sky-600 dark:text-sky-300 hover:bg-sky-100 dark:hover:bg-slate-600 border border-sky-200 dark:border-slate-600'
                   }`}
                 >
                   {isListening ? <MicOff className="w-3.5 h-3.5" /> : <Mic className="w-3.5 h-3.5" />}
@@ -213,7 +213,7 @@ export default function InputSection({
                   type="button"
                   onClick={handleClear}
                   title={t.step3.clear}
-                  className="p-1.5 rounded-lg text-slate-400 hover:text-rose-500 hover:bg-slate-100"
+                  className="p-1.5 rounded-lg text-slate-400 dark:text-slate-500 hover:text-rose-500 dark:hover:text-rose-400 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors"
                 >
                   <Eraser className="w-4 h-4" />
                 </button>
@@ -223,8 +223,8 @@ export default function InputSection({
 
           {/* Quick sample question chips for active subject */}
           {currentSubjectObj?.sampleQuestions?.length > 0 && (
-            <div className="bg-sky-50/50 p-3 rounded-2xl border border-sky-100">
-              <div className="flex items-center gap-1.5 text-xs font-bold text-sky-800 mb-2">
+            <div className="bg-sky-50/50 dark:bg-slate-800/50 p-3 rounded-2xl border border-sky-100 dark:border-slate-700/60">
+              <div className="flex items-center gap-1.5 text-xs font-bold text-sky-800 dark:text-sky-300 mb-2">
                 <Lightbulb className="w-3.5 h-3.5 text-amber-500" />
                 <span>{isUz ? currentSubjectObj.name : currentSubjectObj.nameEn} {t.step3.samplesTitle}</span>
               </div>
@@ -234,10 +234,10 @@ export default function InputSection({
                     key={idx}
                     type="button"
                     onClick={() => handleQuickQuestionClick(q.prompt, q.type)}
-                    className="text-left text-xs bg-white hover:bg-sky-50 text-slate-700 hover:text-sky-800 px-3 py-1.5 rounded-xl border border-sky-200 shadow-2xs transition-all active:scale-95"
+                    className="text-left text-xs bg-white dark:bg-slate-800 hover:bg-sky-50 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 hover:text-sky-800 dark:hover:text-sky-300 px-3 py-1.5 rounded-xl border border-sky-200 dark:border-slate-700 shadow-2xs transition-all active:scale-95"
                   >
-                    <span className="font-bold text-sky-600 mr-1.5">⚡ {q.title}:</span>
-                    <span className="text-slate-500 line-clamp-1">{q.prompt}</span>
+                    <span className="font-bold text-sky-600 dark:text-sky-400 mr-1.5">⚡ {q.title}:</span>
+                    <span className="text-slate-500 dark:text-slate-400 line-clamp-1">{q.prompt}</span>
                   </button>
                 ))}
               </div>
@@ -258,8 +258,8 @@ export default function InputSection({
       )}
 
       {/* Primary Submit Action Button */}
-      <div className="mt-6 pt-4 border-t border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-        <p className="text-xs text-slate-400">
+      <div className="mt-6 pt-4 border-t border-slate-100 dark:border-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+        <p className="text-xs text-slate-400 dark:text-slate-500">
           {t.step3.tailoredNote}
         </p>
 
@@ -269,8 +269,8 @@ export default function InputSection({
           onClick={handleSubmit}
           className={`flex items-center justify-center gap-2.5 px-8 py-3.5 rounded-2xl font-bubble text-base sm:text-lg font-bold text-white shadow-lg transition-all active:scale-95 ${
             isSubmitDisabled
-              ? 'bg-slate-300 cursor-not-allowed shadow-none'
-              : 'bg-gradient-to-r from-sky-500 via-indigo-500 to-purple-600 hover:from-sky-600 hover:to-purple-700 shadow-sky-200 hover:shadow-xl hover:scale-[1.02] animate-pulse-subtle'
+              ? 'bg-slate-300 dark:bg-slate-800 dark:text-slate-500 cursor-not-allowed shadow-none'
+              : 'bg-gradient-to-r from-sky-500 via-indigo-500 to-purple-600 hover:from-sky-600 hover:to-purple-700 shadow-sky-200 dark:shadow-purple-950 hover:shadow-xl hover:scale-[1.02] animate-pulse-subtle'
           }`}
         >
           <Sparkles className="w-5 h-5 text-amber-300 fill-amber-300 animate-spin-slow" />

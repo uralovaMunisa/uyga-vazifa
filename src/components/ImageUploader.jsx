@@ -149,19 +149,19 @@ export default function ImageUploader({
           onDrop={handleDrop}
           className={`relative border-3 border-dashed rounded-3xl p-6 sm:p-8 text-center transition-all duration-200 ${
             isDragging
-              ? 'border-sky-500 bg-sky-50/80 scale-[1.01]'
-              : 'border-sky-200 bg-sky-50/30 hover:bg-sky-50/60 hover:border-sky-400'
+              ? 'border-sky-500 bg-sky-50/80 dark:bg-sky-950/40 scale-[1.01]'
+              : 'border-sky-200 dark:border-slate-700 bg-sky-50/30 dark:bg-slate-800/30 hover:bg-sky-50/60 dark:hover:bg-slate-800/60 hover:border-sky-400 dark:hover:border-sky-500'
           }`}
         >
           {/* Animated decorative camera icon */}
-          <div className="w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-4 rounded-3xl bg-gradient-to-tr from-sky-400 to-indigo-500 flex items-center justify-center text-white shadow-md shadow-sky-200 animate-float-y">
+          <div className="w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-4 rounded-3xl bg-gradient-to-tr from-sky-400 to-indigo-500 flex items-center justify-center text-white shadow-md shadow-sky-200 dark:shadow-sky-950 animate-float-y">
             <Camera className="w-8 h-8 sm:w-10 sm:h-10" />
           </div>
 
-          <h3 className="font-bubble text-lg sm:text-xl font-bold text-slate-800 mb-1">
+          <h3 className="font-bubble text-lg sm:text-xl font-bold text-slate-800 dark:text-slate-100 mb-1">
             {t.imageUploader.dropTitle}
           </h3>
-          <p className="text-xs sm:text-sm text-slate-500 max-w-md mx-auto mb-5">
+          <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 max-w-md mx-auto mb-5">
             {t.imageUploader.dropDesc}
           </p>
 
@@ -170,7 +170,7 @@ export default function ImageUploader({
             <button
               type="button"
               onClick={startCamera}
-              className="flex items-center gap-2 px-5 py-3 rounded-2xl bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white font-bubble text-sm font-bold shadow-md shadow-emerald-200 active:scale-95 transition-all"
+              className="flex items-center gap-2 px-5 py-3 rounded-2xl bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white font-bubble text-sm font-bold shadow-md shadow-emerald-200 dark:shadow-emerald-950 active:scale-95 transition-all"
             >
               <Video className="w-4 h-4" />
               <span>{t.imageUploader.openCamera}</span>
@@ -179,15 +179,15 @@ export default function ImageUploader({
             <button
               type="button"
               onClick={() => fileInputRef.current?.click()}
-              className="flex items-center gap-2 px-5 py-3 rounded-2xl bg-white hover:bg-slate-50 text-slate-700 font-bubble text-sm font-bold border-2 border-slate-200 hover:border-sky-300 shadow-2xs active:scale-95 transition-all"
+              className="flex items-center gap-2 px-5 py-3 rounded-2xl bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 font-bubble text-sm font-bold border-2 border-slate-200 dark:border-slate-700 hover:border-sky-300 dark:hover:border-slate-600 shadow-2xs active:scale-95 transition-all"
             >
-              <UploadCloud className="w-4 h-4 text-sky-500" />
+              <UploadCloud className="w-4 h-4 text-sky-500 dark:text-sky-400" />
               <span>{t.imageUploader.uploadPhoto}</span>
             </button>
           </div>
 
           {cameraError && (
-            <p className="mt-4 text-xs text-rose-600 bg-rose-50 border border-rose-200 rounded-xl p-2 max-w-sm mx-auto">
+            <p className="mt-4 text-xs text-rose-600 dark:text-rose-400 bg-rose-50 dark:bg-rose-950/40 border border-rose-200 dark:border-rose-900 rounded-xl p-2 max-w-sm mx-auto">
               {cameraError}
             </p>
           )}
@@ -234,8 +234,8 @@ export default function ImageUploader({
 
       {/* Uploaded / Selected Image Preview */}
       {imageSrc && !cameraActive && (
-        <div className="relative bg-white p-3 sm:p-4 rounded-3xl border-2 border-sky-300 shadow-md">
-          <div className="relative rounded-2xl overflow-hidden bg-slate-100 max-h-80 flex items-center justify-center border border-slate-200">
+        <div className="relative bg-white dark:bg-slate-900 p-3 sm:p-4 rounded-3xl border-2 border-sky-300 dark:border-slate-700 shadow-md">
+          <div className="relative rounded-2xl overflow-hidden bg-slate-100 dark:bg-slate-950 max-h-80 flex items-center justify-center border border-slate-200 dark:border-slate-800">
             <img
               src={imageSrc}
               alt="Homework Preview"
@@ -251,20 +251,20 @@ export default function ImageUploader({
               <X className="w-4 h-4" />
             </button>
 
-            <div className="absolute bottom-3 left-3 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full border border-sky-200 text-xs font-bold text-sky-800 flex items-center gap-1.5 shadow-2xs">
+            <div className="absolute bottom-3 left-3 bg-white/90 dark:bg-slate-900/90 backdrop-blur-sm px-3 py-1 rounded-full border border-sky-200 dark:border-slate-700 text-xs font-bold text-sky-800 dark:text-sky-300 flex items-center gap-1.5 shadow-2xs">
               <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500" />
               <span>{t.imageUploader.readyBadge}</span>
             </div>
           </div>
 
           <div className="mt-3 flex items-center justify-between">
-            <p className="text-xs text-slate-500 font-medium">
+            <p className="text-xs text-slate-500 dark:text-slate-400 font-medium">
               {t.imageUploader.readyText}
             </p>
             <button
               type="button"
               onClick={() => fileInputRef.current?.click()}
-              className="text-xs font-bold text-sky-600 hover:text-sky-700 underline"
+              className="text-xs font-bold text-sky-600 dark:text-sky-400 hover:text-sky-700 dark:hover:text-sky-300 underline"
             >
               {t.imageUploader.changeImage}
             </button>
@@ -273,13 +273,13 @@ export default function ImageUploader({
       )}
 
       {/* Preset Homework Sample Photos (Great for instant testing!) */}
-      <div className="bg-white/90 p-4 rounded-3xl border border-sky-100 shadow-2xs">
+      <div className="bg-white/90 dark:bg-slate-900/90 p-4 rounded-3xl border border-sky-100 dark:border-slate-800 shadow-2xs transition-colors">
         <div className="flex items-center justify-between mb-3">
-          <div className="flex items-center gap-1.5 text-xs font-bold text-slate-700">
+          <div className="flex items-center gap-1.5 text-xs font-bold text-slate-700 dark:text-slate-200">
             <Sparkles className="w-4 h-4 text-amber-500" />
             <span>{t.imageUploader.demoTitle}</span>
           </div>
-          <span className="text-[11px] text-slate-400 hidden sm:inline">{t.imageUploader.oneClickTest}</span>
+          <span className="text-[11px] text-slate-400 dark:text-slate-500 hidden sm:inline">{t.imageUploader.oneClickTest}</span>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
@@ -292,11 +292,11 @@ export default function ImageUploader({
                 onClick={() => handleSelectSample(sample)}
                 className={`flex items-center gap-2.5 p-2.5 rounded-2xl border-2 text-left transition-all ${
                   isSelected
-                    ? 'border-sky-500 bg-sky-50 shadow-2xs scale-[1.02]'
-                    : 'border-slate-200 bg-white hover:border-sky-300 hover:bg-slate-50'
+                    ? 'border-sky-500 bg-sky-50 dark:bg-slate-800 shadow-2xs scale-[1.02]'
+                    : 'border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800/60 hover:border-sky-300 dark:hover:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800'
                 }`}
               >
-                <div className="w-12 h-12 rounded-xl overflow-hidden flex-shrink-0 bg-slate-100 border border-slate-200">
+                <div className="w-12 h-12 rounded-xl overflow-hidden flex-shrink-0 bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
                   <img
                     src={sample.thumbnail}
                     alt={sample.title}
@@ -305,14 +305,14 @@ export default function ImageUploader({
                 </div>
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-1">
-                    <span className="text-xs font-bubble font-bold text-slate-800 truncate">
+                    <span className="text-xs font-bubble font-bold text-slate-800 dark:text-slate-100 truncate">
                       {isUz ? sample.title : sample.titleEn}
                     </span>
                   </div>
-                  <p className="text-[10px] text-sky-600 font-semibold truncate">
+                  <p className="text-[10px] text-sky-600 dark:text-sky-400 font-semibold truncate">
                     {isUz ? sample.badge : sample.badgeEn}
                   </p>
-                  <p className="text-[10px] text-slate-400 truncate">
+                  <p className="text-[10px] text-slate-400 dark:text-slate-500 truncate">
                     {sample.description}
                   </p>
                 </div>

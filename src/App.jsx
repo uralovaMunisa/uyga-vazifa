@@ -24,6 +24,12 @@ export default function App() {
     return localStorage.getItem('studybuddy_mode') || 'pro'; // 'pro' for older students/adults/high school, 'kid' for young kids
   });
 
+  const [theme, setTheme] = useState(() => {
+    const saved = localStorage.getItem('studybuddy_theme');
+    if (saved) return saved;
+    return (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
+  });
+
   const t = TRANSLATIONS[language] || TRANSLATIONS.uz;
   const isUz = language === 'uz';
 
@@ -90,6 +96,15 @@ export default function App() {
   }, [mode]);
 
   useEffect(() => {
+    localStorage.setItem('studybuddy_theme', theme);
+    if (theme === 'dark') {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  }, [theme]);
+
+  useEffect(() => {
     localStorage.setItem('studybuddy_stars', stars.toString());
     const calculatedLevel = Math.max(1, Math.floor(stars / 20) + 1);
     setLevel(calculatedLevel);
@@ -128,6 +143,17 @@ export default function App() {
       setCurrentMascotId('barnaby');
       setSpeechBubbleText(isUz ? "Bolalar rejimi faollashdi! 🧸" : "Kids Mode activated! 🧸");
     }
+  };
+
+  // Toggle Theme (Dark / Qora fon <-> Light / Oq fon)
+  const handleToggleTheme = () => {
+    const newTheme = theme === 'dark' ? 'light' : 'dark';
+    setTheme(newTheme);
+    sounds.playPop();
+    setSpeechBubbleText(newTheme === 'dark' 
+      ? (isUz ? "Qora fon (Tungi rejim) yoqildi! 🌙 Ko‘zlarga qulay va yoqimli!" : "Dark mode activated! 🌙 Easy on the eyes!")
+      : (isUz ? "Oq fon (Kunduzgi rejim) yoqildi! ☀️ Yorqin va tiniq ko‘rinish!" : "Light mode activated! ☀️ Bright and clear!")
+    );
   };
 
   // Subject changes reaction
@@ -252,6 +278,8 @@ export default function App() {
         onToggleLanguage={handleToggleLanguage}
         mode={mode}
         onToggleMode={handleToggleMode}
+        theme={theme}
+        onToggleTheme={handleToggleTheme}
         onOpenStreakModal={() => setIsStreakModalOpen(true)}
         onOpenApiModal={() => setIsApiModalOpen(true)}
       />
@@ -345,21 +373,21 @@ export default function App() {
       </main>
 
       {/* 3. Footer */}
-      <footer className="mt-12 border-t border-sky-100 bg-white/70 backdrop-blur-xs py-6 text-center text-xs text-slate-400">
+      <footer className="mt-12 border-t border-sky-100 dark:border-slate-800 bg-white/70 dark:bg-slate-900/80 backdrop-blur-xs py-6 text-center text-xs text-slate-400 dark:text-slate-500 transition-colors">
         <div className="max-w-4xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p className="font-medium text-slate-500">
+          <p className="font-medium text-slate-500 dark:text-slate-400">
             {t.footer.text}
           </p>
           <div className="flex items-center gap-4">
             <button
               onClick={() => setIsStreakModalOpen(true)}
-              className="hover:text-sky-600 underline font-semibold"
+              className="hover:text-sky-600 dark:hover:text-sky-400 underline font-semibold transition-colors"
             >
               {t.footer.rewards}
             </button>
             <button
               onClick={() => setIsApiModalOpen(true)}
-              className="hover:text-purple-600 underline font-semibold"
+              className="hover:text-purple-600 dark:hover:text-purple-400 underline font-semibold transition-colors"
             >
               {t.footer.settings}
             </button>

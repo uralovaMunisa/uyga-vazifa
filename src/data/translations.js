@@ -22,6 +22,9 @@ export const TRANSLATIONS = {
       soundOn: 'Ovoz yoqilgan',
       soundOff: 'Ovoz o‘chirilgan',
       apiSettings: 'AI Sozlamalari (Gemini / OpenAI)',
+      themeDark: 'Qora fon',
+      themeLight: 'Oq fon',
+      themeToggle: 'Qora va oq fonga o‘tkazish',
     },
     hero: {
       badge: '✨ Har qanday vazifa uchun tezkor yordamchi',
@@ -170,6 +173,9 @@ export const TRANSLATIONS = {
       soundOn: 'Sound On',
       soundOff: 'Sound Muted',
       apiSettings: 'AI Settings (Gemini / OpenAI)',
+      themeDark: 'Dark mode',
+      themeLight: 'Light mode',
+      themeToggle: 'Toggle Dark / Light background',
     },
     hero: {
       badge: '✨ Instant friendly homework tutor',
